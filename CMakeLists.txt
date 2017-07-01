@@ -2,7 +2,6 @@ project(Proland CXX C)
 cmake_minimum_required(VERSION 2.6)
 cmake_policy(VERSION 2.6)
 
-
 SET(PROLAND_VERSION_MAJOR 4)
 SET(PROLAND_VERSION_MINOR 0)
 SET(PROLAND_VERSION "${PROLAND_VERSION_MAJOR}.${PROLAND_VERSION_MINOR}")
@@ -52,8 +51,8 @@ add_subdirectory(terrain)
 add_subdirectory(atmo)
 add_subdirectory(ocean)
 add_subdirectory(forest)
-add_subdirectory(river)
 add_subdirectory(graph)
+add_subdirectory(river)
 add_subdirectory(edit)
 
 if(BUILD_EXAMPLES)
