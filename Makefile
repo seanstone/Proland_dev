@@ -6,12 +6,14 @@ lib: $(LIBS)
 $(LIBS): export SRC = $(shell find $@/sources -name *.cpp)
 $(LIBS): export CPPFLAGS += $(patsubst %,-I%/sources,$(LIBS))
 $(LIBS):
-	$(MAKE) build/libproland-$@.a
+	$(MAKE) build/lib/libproland-$@.a
 
-build/libproland-%.a: $(addprefix build/,$(SRC:.cpp=.o))
+build/lib/libproland-%.a: $(addprefix build/obj/,$(SRC:.cpp=.o))
+	mkdir -p $(@D)
 	ar rcsv $@ $^
 
-build/%.o: %.cpp
+.PRECIOUS: build/obj/%.o
+build/obj/%.o: %.cpp
 	mkdir -p $(@D)
 	g++ $(CPPFLAGS) -c $< -o $@
 
